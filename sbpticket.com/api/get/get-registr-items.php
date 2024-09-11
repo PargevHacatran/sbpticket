@@ -59,7 +59,19 @@
             }
         }
 
-        echo json_encode([$drivers, $routes, $cars, $users]);
+        $agentsSQL = "SELECT * FROM `agents`";
+
+        $agentsList = $conn->query($agentsSQL);
+
+        $agents = [];
+
+        if ($agentsList->num_rows > 0) {
+            while ($agentsRow = $agentsList->fetch_assoc()) {
+                array_push($agents, $agentsRow);
+            }
+        }
+
+        echo json_encode([$drivers, $routes, $cars, $users, $agents]);
     }
 
 ?>

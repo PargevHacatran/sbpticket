@@ -6,16 +6,12 @@
     $password = 'admin';
     $dbname = 'sbpticket';
 
-    $type = $_POST['type'];
-    $key = $_POST['key'];
+    $carrierEmail = $_POST['carrierEmail'];
 
     $conn = mysqli_connect($server, $username, $password, $dbname);
 
-    if (!$conn) {
-        echo die('ERROR:' . mysql_error());
-    } else {
-        $sql = "DELETE FROM `$type` WHERE id=" . $key . "";
+    $sql = "INSERT INTO `routes` (routes, carrierEmail) VALUES ('".$_POST['data']."', '$carrierEmail')";
 
-        $conn->query($sql);
-    }
+    $conn->query($sql);
+
 ?>

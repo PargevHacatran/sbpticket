@@ -47,6 +47,15 @@
 
                 $conn->query($sql);
                 break;
+            case 'agents':
+                $name = $_POST['name'];
+                $tgName = $_POST['tgName'];
+                $region = $_POST['region'];
+                
+                $sql = "UPDATE `agents` SET name='$name', tag='$tgName', region='$region' WHERE id=$key";
+
+                $conn->query($sql);
+                break;
             default:
                 echo 'No datas';
         }
